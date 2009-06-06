@@ -1,75 +1,31 @@
-require 'jam/nokogiri'
+#require 'facets/hash/to_h'
 
 module Jam
 
-  # Jam Templates are data-driven templates. They take
-  # valid XML/XHTML documents and expand them based on
-  # the data structures provided.
+  # Jam Engine
   #
   #--
-  # TODO: Should rendered output have document headers like <?xml or a doctype for HTML.
+  # TODO: Need to figure how to deal with document vs. fragment.
+  #       A document might have a header <?xml ... or a doctype for HTML.
+  # TODO: Can we normalize parser options across all backends. REXML seems a limiting factor.
   #++
-  class Template
+
+  class Engine
     DEFAULT_ADAPTER = 'Nokogiri'
 
-    attr :engine
-    #attr :adapter
-    #attr :file
+    attr :adapter
 
-    # New template from source file.
+    # New Engine
     #
-    # * +file+ is the file location of a source.
-    # * +adapter+ is either :nokogiri, :libxml or :rexml.
-    # * +options+ are per-adapter and passed through to the underlying adapter's parser
-    #
-    def self.load(file, adapter=DEFAULT_ADAPTER, *options)
-      new(File.read(file), adapter, *options)
+    def initialize(adapter=DEFAULT_ADAPTER, *options)
+      @adapter = Jam.const_get(adapter).new(*options)
     end
 
-    # New template from source string.
-    #
-    # * +source+ can be either a String or an IO object.
-    # * +adapter+ is either :nokogiri, :libxml or :rexml.
-    # * +options+ are per-adapter and passed through to the underlying adapter's parser
-    #
-    def initialize(source, adapter=DEFAULT_ADAPTER, *options)
-      @engine  = Engine.new(adapter)
-      #@adapter = Jam.const_get(adapter.to_s.capitalize).new(*options)
-      @source  = source
-    end
-
-    #
-    def document
-      @document ||= engine.adapter.document(@source)
-    end
-
-    #
-    # TODO: Should we render as doc, this might add a header, or render as root where it does not.
-    #
-    def render(data)
-      engine.interpolate(document, data).root.to_s
-    end
-
-    alias_method :expand, :render
-
-    #
-    def to_s
-      document.to_s
-    end
-
-
-=begin
     # Interpolate data into document, returning the document object.
     #
-    def interpolate(data)
-      interpolate_node(data, document)
+    def interpolate(node, data)
+      interpolate_node(node, data)
     end
-
-    #
-    def jam(data)
-      interpolate_node(data, document)
-    end
-
 
   private
 
@@ -94,7 +50,7 @@ module Jam
 
     # Interpolate data.
     #
-    def interpolate_node(data, node)
+    def interpolate_node(node, data)
       case data
       when nil
         adapter.remove(node)
@@ -108,13 +64,6 @@ module Jam
         interpolate_object(node, data)
       end
       return node
-    end
-
-    # Interpolate object.
-    #
-    def interpolate_object(node, data)
-      data = Hash[data.instance_variables.map{ |iv| [iv[1..-1], data.instance_variable_get(iv)] }]
-      interpolate_mapping(node, data)
     end
 
     # Interpolate mapping.
@@ -141,18 +90,25 @@ module Jam
             #if tag == false
             #  qry = '#' + qry
             #end
-            set = adapter.search(node, qry)
-            adapter.attribute(set, att, val)
+            nodeset = adapter.search(node, qry)
+            adapter.attribute(nodeset, att, val)
           else
             adapter.attribute(node, att, val)
           end
         else
-          set = adapter.search(node, qry)
-          if set.size > 0
-            interpolate_node(val, set)
+          nodeset = adapter.search(node, qry)
+          if nodeset.size > 0
+            interpolate_node(nodeset, val)
           end
         end
       end
+    end
+
+    # Interpolate object.
+    #
+    def interpolate_object(node, data)
+      data = Hash[data.instance_variables.map{ |iv| [iv[1..-1], data.instance_variable_get(iv)] }]
+      interpolate_mapping(node, data)
     end
 
     # Interpolate attribute.
@@ -167,7 +123,7 @@ module Jam
       adapter.each_node(nodes) do |node|
         parent = node.parent
         data.each do |new_data|
-          new_node = interpolate_node(new_data, node.dup)
+          new_node = interpolate_node(node.dup, new_data)
           parent << new_node
           node.remove
         end
@@ -196,9 +152,8 @@ module Jam
       #adapter.empty(node)
       adapter.replace(nodes, data.to_s)
     end
-=end
 
-  end #class Template
+  end #class Engine
 
 end #module Jam
 

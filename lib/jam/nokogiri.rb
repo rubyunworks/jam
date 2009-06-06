@@ -3,21 +3,21 @@ require 'jam/engine'
 
 module Nokogiri
 
-  class Document
+  class XML::Document
     def jam(data, opts={})
       engine = ::Jam::Engine.new(:Nokogiri)
       engine.interpolate(self, data)
     end
   end
 
-  class Node
+  class XML::Node
     def jam(data, opts={})
       engine = ::Jam::Engine.new(:Nokogiri)
       engine.interpolate(self, data)
     end
   end
 
-  class NodeSet
+  class XML::NodeSet
     def jam(data, opts={})
       engine = ::Jam::Engine.new(:Nokogiri)
       engine.interpolate(self, data)
