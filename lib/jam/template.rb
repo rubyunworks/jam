@@ -65,6 +65,25 @@ module Jam
 
   private
 
+    # Converts plain keys to css selectors.
+    #
+    # TODO: Change to use special attribute instead of 'id'?
+    #
+    def prepare_data(data)
+      d = {}
+      data.each do |key, val|
+        case key.to_s
+        when /^<(.*?)>(.*)$/
+          d["#{$1}#{$2}"] = val
+        when /^\w/
+          d["##{key}"] = val
+        else
+          d[key.to_s] = val
+        end
+      end
+      return d
+    end
+
     # Interpolate data.
     #
     def interpolate_node(data, node)
@@ -93,20 +112,11 @@ module Jam
     # Interpolate mapping.
     #
     def interpolate_mapping(node, data)
-      qry = nil
-      att = nil
-      tag = nil
+      data = prepare_data(data)
 
       data.each do |id, val|
         att = false
-        tag = false
         qry = id.to_s
-
-        result = qry.match(/^<(.*?)>$/)
-        if result
-          tag = true
-          qry = result[1]
-        end
 
         result = qry.match(/^((.*?)\/)?([@](.*?))$/);
         if result
@@ -116,26 +126,22 @@ module Jam
           att = false
         end
 
-        if att == false
-          if tag == false 
-            qry = '#' + qry
-          end
-          # probably change to use special attribute instead of 'id'?
-          match = adapter.search(node, qry)
-          if match.size > 0
-            interpolate_node(val, match)
-          end
-        else
+        if att
           #qry = qry + '[@' + att + ']';
           #search(node,qry).attr(att,val);
           if qry
-            if tag == false
-              qry = '#' + qry
-            end
-            ns = adapter.search(node, qry)
-            adapter.attribute(ns, att, val)
+            #if tag == false
+            #  qry = '#' + qry
+            #end
+            set = adapter.search(node, qry)
+            adapter.attribute(set, att, val)
           else
             adapter.attribute(node, att, val)
+          end
+        else
+          set = adapter.search(node, qry)
+          if set.size > 0
+            interpolate_node(val, set)
           end
         end
       end
