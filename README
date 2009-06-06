@@ -1,5 +1,39 @@
 = Jam
 
-Jam is a data-driven template engine.
+  http://jam.rubyforge.org
 
+Jam is a data-driven templater system. Jam provides 100% sepearation between
+logic and presentation.
+
+Jam can operate on the back-end via Ruby or on the front-end via Javascript/jQuery
+off-loading some of the back-end work load, while also providing 100% SOC
+(Seperation of Concern).
+
+
+== Examples
+
+Here is an example of usage in Javascript.
+
+   data = {
+     hello: "Hello, World!"
+   }
+
+   $.jam(data)
+
+Jam templates are especially useful when filled via AJAX with JSON data.
+For this reason a shortcut is provided.
+
+  $.jam_ajax('http://somewhere/data.json')
+
+
+== TODO
+
+Jam will likely witch from jQuery to Swizzle on the Javascript side in the future.
+
+
+= License
+
+Jam - Ruby/Javascript Templates
+
+Copyright (c) 2007,2008 Tiger Ops 
 
