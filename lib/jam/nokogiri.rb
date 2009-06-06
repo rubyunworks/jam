@@ -1,4 +1,31 @@
 require 'nokogiri'
+require 'jam/engine'
+
+module Nokogiri
+
+  class Document
+    def jam(data, opts={})
+      engine = ::Jam::Engine.new(:Nokogiri)
+      engine.interpolate(self, data)
+    end
+  end
+
+  class Node
+    def jam(data, opts={})
+      engine = ::Jam::Engine.new(:Nokogiri)
+      engine.interpolate(self, data)
+    end
+  end
+
+  class NodeSet
+    def jam(data, opts={})
+      engine = ::Jam::Engine.new(:Nokogiri)
+      engine.interpolate(self, data)
+    end
+  end
+
+end
+
 
 module Jam
 
