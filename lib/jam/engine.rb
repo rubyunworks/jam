@@ -2,24 +2,15 @@
 
 module Jam
 
-  # Jam Engine
+  # = Jam Engine
+  #
+  # The Engine class serves as the base class for the various Jam adapters.
   #
   #--
-  # TODO: Need to figure how to deal with document vs. fragment.
-  #       A document might have a header <?xml ... or a doctype for HTML.
   # TODO: Can we normalize parser options across all backends. REXML seems a limiting factor.
   #++
 
   class Engine
-    DEFAULT_ADAPTER = 'Nokogiri'
-
-    attr :adapter
-
-    # New Engine
-    #
-    def initialize(adapter=DEFAULT_ADAPTER, *options)
-      @adapter = Jam.const_get(adapter).new(*options)
-    end
 
     # Interpolate data into document, returning the document object.
     #
@@ -53,7 +44,7 @@ module Jam
     def interpolate_node(node, data)
       case data
       when nil
-        adapter.remove(node)
+        remove(node)
       when Array
         interpolate_sequence(node, data)
       when String, Numeric
@@ -90,13 +81,13 @@ module Jam
             #if tag == false
             #  qry = '#' + qry
             #end
-            nodeset = adapter.search(node, qry)
-            adapter.attribute(nodeset, att, val)
+            nodeset = search(node, qry)
+            attribute(nodeset, att, val)
           else
-            adapter.attribute(node, att, val)
+            attribute(node, att, val)
           end
         else
-          nodeset = adapter.search(node, qry)
+          nodeset = search(node, qry)
           if nodeset.size > 0
             interpolate_node(nodeset, val)
           end
@@ -120,12 +111,12 @@ module Jam
     # Interpolate array sequence.
     #
     def interpolate_sequence(nodes, data)
-      adapter.each_node(nodes) do |node|
+      each_node(nodes) do |node|
         parent = node.parent
         data.each do |new_data|
           new_node = interpolate_node(node.dup, new_data)
-          parent << new_node
-          node.remove
+          append(parent, new_node)
+          remove(node)
         end
       end
     end
@@ -149,8 +140,8 @@ module Jam
       #this.not(special).empty();
       #this.not(special).append(data.toString());
       #alert(data);
-      #adapter.empty(node)
-      adapter.replace(nodes, data.to_s)
+      #empty(node)
+      replace(nodes, data.to_s)
     end
 
   end #class Engine

@@ -5,21 +5,21 @@ module Nokogiri
 
   class XML::Document
     def jam(data, opts={})
-      engine = ::Jam::Engine.new(:Nokogiri)
+      engine = ::Jam::Nokogiri.new()
       engine.interpolate(self, data)
     end
   end
 
   class XML::Node
     def jam(data, opts={})
-      engine = ::Jam::Engine.new(:Nokogiri)
+      engine = ::Jam::Nokogiri.new()
       engine.interpolate(self, data)
     end
   end
 
   class XML::NodeSet
     def jam(data, opts={})
-      engine = ::Jam::Engine.new(:Nokogiri)
+      engine = ::Jam::Nokogiri.new()
       engine.interpolate(self, data)
     end
   end
@@ -31,7 +31,7 @@ module Jam
 
   # Nokogiri Adaptor
   #
-  class Nokogiri
+  class Nokogiri < Engine
 
     #
     def initialize(*options)
@@ -97,6 +97,11 @@ module Jam
     def replace(ns, child)
       empty(ns)
       append(ns, child)
+    end
+
+    #
+    def remove(node)
+      node.remove
     end
 
     #

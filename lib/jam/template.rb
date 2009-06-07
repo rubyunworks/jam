@@ -1,4 +1,5 @@
 require 'jam/nokogiri'
+require 'jam/libxml'
 
 module Jam
 
@@ -33,14 +34,14 @@ module Jam
     # * +options+ are per-adapter and passed through to the underlying adapter's parser
     #
     def initialize(source, adapter=DEFAULT_ADAPTER, *options)
-      @engine  = Engine.new(adapter)
-      #@adapter = Jam.const_get(adapter.to_s.capitalize).new(*options)
-      @source  = source
+      #@engine  = Engine.new(adapter)
+      @engine = Jam.const_get(adapter.to_s).new(*options)
+      @source = source
     end
 
     #
     def document
-      @document ||= engine.adapter.document(@source)
+      @document ||= engine.document(@source)
     end
 
     #
