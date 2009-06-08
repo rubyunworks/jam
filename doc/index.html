@@ -1,0 +1,71 @@
+<html>
+<head>
+  <title>Jam</title>
+  <link REL="SHORTCUT ICON" HREF="assets/images/jar.jpg">
+  <script src="assets/scripts/jquery.js"></script>
+  <script src="assets/scripts/jquery.jam.js"></script>
+  <script>
+    $(document).ready(function(){
+      // Your code here
+    });
+
+    function fix(str) {
+      str = str.replace(/\</g, "&lt;");
+      str = str.replace(/\>/g, "&gt;");
+      return(str);
+    };
+    function bam() {
+      var data;
+      data = { 'x': 'Easy', 'y': 'Clean', 'z': 'Smart' };
+      $.jam(data)
+    };
+  </script>
+  <style>
+    body { font-family: sans-serif; padding: 30px 40px; }
+      h1 { color: red; font-size: 64pt; margin: 0; padding: 0; opacity: 0.8; background: black; width: 300px; text-align: center; }
+      ul { margin: 0; padding: 0; list-style-type: none; }
+      li { background: black; padding: 5px 0; margin: 0; width: 150px; opacity: 0.8; width: 300px; text-align: center; font-weight: bold; }
+       a { color: white; font-family: sans-serif; text-decoration: none; }
+     .to { font-size: 14pt; font-weight: bold; padding: 5px 0; text-align: center; }
+     .to a { font-size: 18pt; color: orange; }
+     .panel { background: black; opacity: 0.8; color: white; width: 300px; }
+  </style>
+</head>
+<body style="background: url(assets/images/jam.jpg) center -700px no-repeat;">
+  <div class="panel">
+    <h1>JAM</h1>
+    <br/>
+    <ul>
+    <li><a href="javascript: bam();">Demonstration</a></li>
+    <li><a href="http://spec/">Specification</a></li>
+    <li><a href="http://rdoc/">Documentation</a></li>
+    <li><a href="http://groups.google.com/group/tigerops-community?hl=en">Mailing List</a></li>
+    <li><a href="http://rubyforge.org/projects/jam">Development</a></li>
+    </ul>
+    <br/>
+    <div class="to">A <a href="http://tigerops.org">TigerOps</a> Project</div>
+    <br/>
+    <div class="to" style="padding: 10px 0;">
+      <script type="text/javascript"><!--
+      google_ad_client = "pub-1126154564663472";
+      /* TIGER 234x60 6/8/09 */
+      google_ad_slot = "2262774714";
+      google_ad_width = 234;
+      google_ad_height = 60;
+      //-->
+      </script>
+      <script type="text/javascript"
+      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
+    </div>
+    <br/>
+  </div>
+
+  <div id="example" style="position: absolute; top: 80px; left: 400px; width: 300px; color: white;">
+    <h2 id="x">A</h2>
+    <h2 id="y">Template</h2>
+    <h2 id="z">Engine</h2>
+  </div>
+</body>
+</html>
+
