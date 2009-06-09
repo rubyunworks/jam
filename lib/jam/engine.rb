@@ -88,9 +88,9 @@ module Jam
           end
         else
           nodeset = search(node, qry)
-          if nodeset.size > 0
+          #if nodeset.size > 0
             interpolate_node(nodeset, val)
-          end
+          #end
         end
       end
     end

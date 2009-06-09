@@ -1,6 +1,6 @@
 require 'libxml'
 require 'jam/engine'
-require 'jam/css2xpath'
+require 'jam/css_to_xpath'
 
 module LibXML
 
@@ -64,10 +64,10 @@ module Jam
     def empty(ns)
       case ns
       when ::LibXML::XML::Node
-        ns.inner_html = ''
+        ns.content = ''
       when ::LibXML::XML::XPath::Object
         ns.each do |n|
-          n.inner_html = ''
+          n.content = ''
         end
       end
     end
