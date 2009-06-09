@@ -1,4 +1,4 @@
-require 'hrpicot'
+require 'hpricot'
 require 'jam/engine'
 
 module Hpricot
@@ -10,7 +10,7 @@ module Hpricot
     end
   end
 
-  class XML::Node
+  class Elem
     def jam(data, opts={})
       engine = ::Jam::Hpricot.new()
       engine.interpolate(self, data)
@@ -40,7 +40,7 @@ module Jam
 
     #
     def document(source)
-      ::Hpricot(source, *@options)
+      ::Hpricot::Doc.new(source, *@options)
     end
 
     #
@@ -65,25 +65,7 @@ module Jam
 
     #
     def append(ns, child)
-      if ::Hpricot::Elements === child
-        case ns
-        #when ::Nokogiri::XML::Node
-        #  ns << child
-        when ::Hpricot::Elements
-          ns.each do |n|
-            n << child
-          end
-        end
-      else
-        case ns
-        #when ::Nokogiri::XML::Node
-        #  ns.content = child
-        when ::Hpricot::Elements
-          ns.each do |n|
-            n.content = child
-          end
-        end
-      end
+      ns.append(child)
     end
 
     #
