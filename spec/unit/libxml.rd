@@ -58,12 +58,16 @@ Jam data into the Nodes of a LibXML::XPath::Object.
     <root><x><m id="a" class="q">dummy</m><n id="b" class="q">dummy</n></x></root>
   EOS
 
-  nodes = xml.find('.q')
+  nodes = xml.find("//*[@class='q']") #('.q')
 
   data = { :a => "A", :b => "B" }
 
   out = nodes.jam(data)
-  out = out.to_s.gsub(/\n\s*/,'')
+
+  # can't get string?
+  out = out.inject(""){ |m, n| m += n.to_s }
+
+  out = out.gsub(/\n\s*/,'')
 
   out.should == %{<m id="a" class="q">A</m><n id="b" class="q">B</n>}
 

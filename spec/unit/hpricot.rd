@@ -1,4 +1,4 @@
-= Unit Tests for Jam Nokogiri Adapter
+= Unit Tests for Jam Hpricot Adapter
 
 Require adapter.
 
@@ -52,7 +52,7 @@ Jam data into a Hpricot Node.
 
 === #jam
 
-Jam data into a Nokogiri Node.
+Jam data into a Hpricot Elements.
 
   xml = Hpricot(%{
     <root><x><m id="a" class="q">dummy</m><n id="b" class="q">dummy</n></x></root>
