@@ -19,6 +19,7 @@ module LibXML
   end
 
   class XML::XPath::Object
+    public :context
     def jam(data, opts={})
       engine = ::Jam::LibXML.new()
       engine.interpolate(self, data)
@@ -47,7 +48,17 @@ module Jam
     #
     def search(node, qry)
       qry = Jam.css_to_xpath(qry)
-      node.find(qry)
+      case node
+      when ::LibXML::XML::XPath::Object, Array
+        a = []
+        node.each do |n|
+          z = n.find(qry).to_a
+          a.concat(z)
+        end
+        a
+      else
+        node.find(qry)
+      end
     end
 
     # deep copy
@@ -65,7 +76,7 @@ module Jam
       case ns
       when ::LibXML::XML::Node
         ns.content = ''
-      when ::LibXML::XML::XPath::Object
+      when ::LibXML::XML::XPath::Object, Array
         ns.each do |n|
           n.content = ''
         end
@@ -75,21 +86,23 @@ module Jam
     #
     def append(ns, child)
       if ::LibXML::XML::XPath::Object === child
-        case ns
-        when ::LibXML::XML::Node
-          ns << child
-        when ::LibXML::XML::XPath::Object
-          ns.each do |n|
-            n << child
+        child.each do |c|
+          case ns
+          when ::LibXML::XML::Node
+            ns << c
+          when ::LibXML::XML::XPath::Object, Array
+            ns.each do |n|
+              n << c
+            end
           end
         end
       else
         case ns
         when ::LibXML::XML::Node
-          ns.content = child
-        when ::LibXML::XML::XPath::Object
+          ns << child
+        when ::LibXML::XML::XPath::Object, Array
           ns.each do |n|
-            n.content = child
+            n << child
           end
         end
       end
@@ -111,7 +124,7 @@ module Jam
       case ns
       when ::LibXML::XML::Node
         ns.attr(att, val)
-      when ::LibXML::XML::XPath::Object
+      when ::LibXML::XML::XPath::Object, Array
         ns.each do |n|
           ns.attr(att, val)
         end
@@ -121,7 +134,10 @@ module Jam
     # Iterate over each node.
     #
     def each_node(nodes)
-      unless ::LibXML::XML::XPath::Object === nodes
+      case nodes
+      when ::LibXML::XML::XPath::Object, Array
+        nodes = nodes
+      else
         nodes = [nodes]
       end
       nodes.each do |node|

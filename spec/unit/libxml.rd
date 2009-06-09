@@ -58,7 +58,7 @@ Jam data into the Nodes of a LibXML::XPath::Object.
     <root><x><m id="a" class="q">dummy</m><n id="b" class="q">dummy</n></x></root>
   EOS
 
-  nodes = xml.find("//*[@class='q']") #('.q')
+  nodes = xml.find(".//*[@class='q']") #('.q')
 
   data = { :a => "A", :b => "B" }
 
