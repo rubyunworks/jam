@@ -45,7 +45,7 @@ module Jam
 
     # all descendant or self to //
     rule /(^|[^a-zA-Z0-9\_\-\*])(#|\.)([a-zA-Z0-9\_\-]+)/, '\1*\2\3'
-    rule /([\>\+\|\~\,\s])([a-zA-Z\*]+)/, '$1//$2'
+    rule /([\>\+\|\~\,\s])([a-zA-Z\*]+)/, '\1//\2'
     rule /\s+\/\//, '//'
 
     # :first-child
@@ -123,7 +123,7 @@ module Jam
           css = css.gsub(f, t)
         end
       end
-      return "//" + css;
+      return ".//" + css;
     end
 
   end
