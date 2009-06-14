@@ -1,0 +1,7 @@
+= TODO
+
+== Tag Erasing
+
+Add erase attribute, jam="erase" or erase="true" or other?
+This will be used to to remove the tag from the xml/xhtml.
+
