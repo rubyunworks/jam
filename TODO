@@ -5,3 +5,18 @@
 Add erase attribute, jam="erase" or erase="true" or other?
 This will be used to to remove the tag from the xml/xhtml.
 
+== Punt Adapter Support to Cherry?
+
+It would be much easier to create cherry, and then use that
+to provide different backend adapters.
+
+I may limit direct support to Nokogiri and let Cherry handle
+the others. Hpricot adapter works pretty well though (despite
+the unit test bombing). So maybe support Hpricot directly too.
+I'd like to support LibXML-Ruby directly since I helped with
+that project for so long, but it's API is not quite as easy
+to support. So... get Nokogiri working first at least.
+
+
+
+
