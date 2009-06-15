@@ -54,11 +54,6 @@ module Jam
     end
 
     #
-    def remove(node)
-      node.remove
-    end
-
-    #
     def empty(ns)
       case ns
       when ::Nokogiri::XML::Node
@@ -71,26 +66,26 @@ module Jam
     end
 
     #
-    def append(ns, child)
-      if ::Nokogiri::XML::NodeSet === child
-        case ns
-        when ::Nokogiri::XML::Node
-          ns << child
-        when ::Nokogiri::XML::NodeSet
-          ns.each do |n|
-            n << child
+    def append(node_or_nodeset, child)
+      ns = node_or_nodeset
+      case child
+      when ::Nokogiri::XML::Node
+        each_node(node_or_nodeset) do |node|
+          node << child
+        end
+      when ::Nokogiri::XML::NodeSet
+        child.each do |n|
+          each_node(node_or_nodeset) do |node|
+            node << n.dup
           end
         end
       else
-        case ns
-        when ::Nokogiri::XML::Node
-          ns.content = child
-        when ::Nokogiri::XML::NodeSet
-          ns.each do |n|
-            n.content = child
-          end
-        end
+        append_text(node_or_nodeset, child)        
       end
+    end
+
+    # TODO
+    def append_text(node_or_nodeset, text)
     end
 
     #
@@ -99,7 +94,15 @@ module Jam
       append(ns, child)
     end
 
+    # Replace node content with text.
     #
+    def replace_content_with_text(node_or_nodeset, text)
+      each_node(node_or_nodeset) do |node|
+        node.content = text
+      end
+    end
+
+    # Remove node.
     def remove(node)
       node.remove
     end
@@ -127,7 +130,24 @@ module Jam
       end
     end
 
+    # Remove jam nodes that ask for it, and all jam attributes.
+    #
+    def cleanup(node)
+      node = node.root if ::Nokogiri::XML::Document === node
+      # remove unwanted tags
+      node.xpath("//*[@jam='erase']").each do |n|
+        n.children.each do |c|
+          n.add_previous_sibling(c)
+        end
+        n.remove
+      end
+      # remove jam attributes
+
+      #
+      node
+    end
+
   end
 
-end
+end #module Jam
 

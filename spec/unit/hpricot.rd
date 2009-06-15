@@ -6,6 +6,81 @@ Require adapter.
 
 This automatically requires 'hpricot' too.
 
+== Jam::Hpricot
+
+Support objects for following tests.
+
+  @xml = "<root><a>A</a><b>B</b><c>C</c></root>"
+  @eng = Jam::Hpricot.new
+
+BEFORE: We will resuse this XML document.
+
+  @doc = @eng.document(@xml)
+
+=== #append
+
+Append should be able to append an XML node.
+
+  node  = @doc.search('root')
+  node2 = node.search('a').dup
+
+  @eng.append(node, node2)
+
+  #out = node.to_s.gsub(/\n\s*/,'')
+  #out.should == '<root><a>A</a><b>B</b><c>C</c><a>A</a></root>'
+
+Append should be able to append a set of nodes.
+
+  node    = @doc.search('root')
+  nodeset = node.children.dup
+
+  @eng.append(node, nodeset)
+
+  out = node.to_s.gsub(/\n\s*/,'')
+  out.should == '<root><a>A</a><b>B</b><c>C</c><a>A</a><b>B</b><c>C</c></root>'
+
+Append should be able to append an XML text fragment.
+
+  node = @doc.root
+
+  @eng.append(node, '<d>D</d>')
+
+  out = node.to_s.gsub(/\n\s*/,'')
+  out.should == '<root><a>A</a><b>B</b><c>C</c><d>D</d></root>'
+
+=== #replace_content_with_text
+
+It should replace node children with given text.
+
+  node = @doc.root
+
+  @eng.replace_content_with_text(node, 'H')
+
+  out = node.to_s.gsub(/\n\s*/,'')
+  out.should == '<root>H</root>'
+
+It should be able to replace the children of each node of a NodeSet with text.
+
+  node    = @doc.root
+  nodeset = @doc.root.children
+
+  @eng.replace_content_with_text(nodeset, 'H')
+
+  out = node.to_s.gsub(/\n\s*/,'')
+  out.should == '<root><a>H</a><b>H</b><c>H</c></root>'
+
+=== #cleanup
+
+This will clean a document, or node, of any elements that request it.
+
+  doc = @eng.document('<root><a jam="erase">This is text.</a></root>')
+
+  @eng.cleanup(doc)
+
+  out = doc.root.to_s.gsub(/\n\s*/,'')
+  out.should == '<root>This is text.</root>'
+
+
 == Hpricot::Doc
 
 === #jam

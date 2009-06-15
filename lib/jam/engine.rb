@@ -141,7 +141,7 @@ module Jam
       #this.not(special).append(data.toString());
       #alert(data);
       #empty(node)
-      replace(nodes, data.to_s)
+      replace_content_with_text(nodes, data.to_s)
     end
 
   end #class Engine

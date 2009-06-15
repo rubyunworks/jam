@@ -26,7 +26,6 @@ module Hpricot
 
 end
 
-
 module Jam
 
   # Hpricot Adaptor
@@ -40,7 +39,7 @@ module Jam
 
     #
     def document(source)
-      ::Hpricot::Doc.new(source, *@options)
+      ::Hpricot.parse(source, *@options)
     end
 
     #
@@ -77,6 +76,11 @@ module Jam
     #
     def remove(node)
       node.remove
+    end
+
+    #
+    def replace_content_with_text(node, text)
+      node.replace(text)
     end
 
     #

@@ -48,13 +48,13 @@ Append should be able to append an XML text fragment.
   out = node.to_s.gsub(/\n\s*/,'')
   out.should == '<root><a>A</a><b>B</b><c>C</c><d>D</d></root>'
 
-== #replace_with_text
+=== #replace_content_with_text
 
 It should replace node children with given text.
 
   node = @doc.root
 
-  @eng.replace_with_text(node, 'H')
+  @eng.replace_content_with_text(node, 'H')
 
   out = node.to_s.gsub(/\n\s*/,'')
   out.should == '<root>H</root>'
@@ -64,10 +64,22 @@ It should be able to replace the children of each node of a NodeSet with text.
   node    = @doc.root
   nodeset = @doc.root.children
 
-  @eng.replace_with_text(nodeset, 'H')
+  @eng.replace_content_with_text(nodeset, 'H')
 
   out = node.to_s.gsub(/\n\s*/,'')
   out.should == '<root><a>H</a><b>H</b><c>H</c></root>'
+
+=== #cleanup
+
+This will clean a document, or node, of any elements that request it.
+
+  doc = @eng.document('<root><a jam="erase">This is text.</a></root>')
+
+  @eng.cleanup(doc)
+
+  out = doc.root.to_s.gsub(/\n\s*/,'')
+  out.should == '<root>This is text.</root>'
+
 
 == ::Nokogiri::Document
 
