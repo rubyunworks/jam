@@ -38,33 +38,38 @@ module Jam
       @options = options
     end
 
+    # Contruct XML document given source text.
     #
     def document(source)
       ::Nokogiri::XML(source, *@options)
     end
 
+    # Use CSS or XPath to search node.
     #
     def search(node, qry)
       node.search(qry)
     end
 
-    # deep copy
+    # Deep copy.
+    #
     def copy(node)
       node.dup 
     end
 
+    # Empty nodes.
     #
-    def empty(ns)
-      case ns
+    def empty(node_or_nodeset)
+      case node_or_nodeset
       when ::Nokogiri::XML::Node
-        ns.inner_html = ''
+        node_or_nodeset.content = ''
       when ::Nokogiri::XML::NodeSet
         ns.each do |n|
-          n.inner_html = ''
+          node_or_nodeset.content = ''
         end
       end
     end
 
+    # Append child to node(s).
     #
     def append(node_or_nodeset, child)
       ns = node_or_nodeset
@@ -88,11 +93,11 @@ module Jam
     def append_text(node_or_nodeset, text)
     end
 
-    #
-    def replace(ns, child)
-      empty(ns)
-      append(ns, child)
-    end
+    # TODO: rename to replace_content
+    #def replace(ns, child)
+    #  empty(ns)
+    #  append(ns, child)
+    #end
 
     # Replace node content with text.
     #
@@ -103,10 +108,12 @@ module Jam
     end
 
     # Remove node.
+    #
     def remove(node)
       node.remove
     end
 
+    # Set an attribute.
     #
     def attribute(ns, att, val)
       case ns
@@ -117,6 +124,20 @@ module Jam
           ns.attr(att, val)
         end
       end
+    end
+
+    # Remove jam nodes that ask for it, and all jam attributes.
+    #
+    def cleanup(node)
+      node = node.root if ::Nokogiri::XML::Document === node
+      # remove unwanted tags
+      node.xpath("//*[@jam='erase']").each do |n|
+        unwrap(n)
+      end
+      # remove jam attributes
+
+      #
+      node
     end
 
     # Iterate over each node.
@@ -130,21 +151,14 @@ module Jam
       end
     end
 
-    # Remove jam nodes that ask for it, and all jam attributes.
+    # Unwrap a node, such that the outer tag is
+    # removed, leaving only it's own children.
     #
-    def cleanup(node)
-      node = node.root if ::Nokogiri::XML::Document === node
-      # remove unwanted tags
-      node.xpath("//*[@jam='erase']").each do |n|
-        n.children.each do |c|
-          n.add_previous_sibling(c)
-        end
-        n.remove
+    def unwrap(node)
+      node.children.each do |child|
+       node.parent << child
       end
-      # remove jam attributes
-
-      #
-      node
+      node.remove
     end
 
   end
