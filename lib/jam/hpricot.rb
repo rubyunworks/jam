@@ -11,9 +11,10 @@ module Hpricot
   end
 
   class Elem
+    # This turns the Elem into an Elements object containing it.
     def jam(data, opts={})
       engine = ::Jam::Hpricot.new()
-      engine.interpolate(self, data)
+      engine.interpolate(::Hpricot::Elements[self], data)
     end
   end
 
@@ -39,7 +40,7 @@ module Jam
 
     #
     def document(source)
-      ::Hpricot.parse(source, *@options)
+      ::Hpricot.parse(source) #, *@options)
     end
 
     #
@@ -64,7 +65,7 @@ module Jam
 
     #
     def append(ns, child)
-      ns.append(child)
+      ns.append(child.to_s)
     end
 
     #
@@ -80,12 +81,43 @@ module Jam
 
     #
     def replace_content_with_text(node, text)
-      node.replace(text)
+      case node
+      when ::Hpricot::Elements
+        node.inner_html = text
+      when ::Array
+        node.each do |n|
+          n.inner_html = text
+        end
+      else
+
+      end
     end
 
     #
     def attribute(ns, att, val)
       ns.set(att, val)
+    end
+
+    # Remove jam nodes that ask for it, and all jam attributes.
+    #
+    def cleanup(node)
+      #node = node.root if ::Nokogiri::XML::Document === node
+      # remove unwanted tags
+      node.search("//*[@jam='erase']").each do |n|
+        unwrap(n)
+      end
+      # remove jam attributes
+
+      #
+      node
+    end
+
+    # Unwrap a node, such that the outer tag is
+    # removed, leaving only it's own children.
+    #
+    def unwrap(node)
+      node.each_child{ |n| node.parent.insert_before(n, node) }
+      ::Hpricot::Elements[node].remove
     end
 
     # Iterate over each node.

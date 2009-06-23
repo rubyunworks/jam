@@ -15,7 +15,9 @@ Support objects for following tests.
 
 BEFORE: We will resuse this XML document.
 
-  @doc = @eng.document(@xml)
+  before {
+    @doc = @eng.document(@xml)
+  }
 
 === #append
 
@@ -26,13 +28,13 @@ Append should be able to append an XML node.
 
   @eng.append(node, node2)
 
-  #out = node.to_s.gsub(/\n\s*/,'')
-  #out.should == '<root><a>A</a><b>B</b><c>C</c><a>A</a></root>'
+  out = node.to_s.gsub(/\n\s*/,'')
+  out.should == '<root><a>A</a><b>B</b><c>C</c><a>A</a></root>'
 
 Append should be able to append a set of nodes.
 
-  node    = @doc.search('root')
-  nodeset = node.children.dup
+  node       = @doc.search('root')
+  nodeset    = @doc.search('root/*')
 
   @eng.append(node, nodeset)
 
@@ -41,7 +43,7 @@ Append should be able to append a set of nodes.
 
 Append should be able to append an XML text fragment.
 
-  node = @doc.root
+  node = @doc.search('root')
 
   @eng.append(node, '<d>D</d>')
 
@@ -52,7 +54,7 @@ Append should be able to append an XML text fragment.
 
 It should replace node children with given text.
 
-  node = @doc.root
+  node = @doc.search('root')
 
   @eng.replace_content_with_text(node, 'H')
 

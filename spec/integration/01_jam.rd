@@ -9,7 +9,7 @@ Load the template library.
 Template rendering with a basic hash.
 
   tmpl = Jam::Template.new <<-EOS
-    <x><y><m id="a">dummy</m><n jam="b">dummy</n></y></x>
+    <x><y><m id="a">dummy</m><n id="b">dummy</n></y></x>
   EOS
 
   data = {
