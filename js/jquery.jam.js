@@ -33,6 +33,9 @@ function inspect(obj) {
 };
 */
 
+//
+//
+//
 jQuery.jam_ajax = function(url) {
   result = url.match(/[.]xml$/);
   if (result != null) {
@@ -42,6 +45,9 @@ jQuery.jam_ajax = function(url) {
   }
 };
 
+//
+//
+//
 jQuery.getXML = function(url, callback) {
   jQuery.ajax({
     dataType: "xml",
@@ -50,42 +56,58 @@ jQuery.getXML = function(url, callback) {
   });
 };
 
+//
 // Interpolate XML by converting to JSON.
 // This only work is xml2json.js is loaded.
-
+//
 jQuery.jam_xml = function(xml) {
   var json = xml2json(xml,'  ');
   //var data = json.parseJSON();
   var data = eval('(' + json + ')');  // SECURE ME!
-  jQuery.cherry(data);
+  jQuery.jam(data);
 };
 
+//
 // Interpolate JSON data.
-
+//
+// TODO: how to do whole document instead of body?
 jQuery.jam = function(data) {
-  jQuery('body').interpolate(data);
+  // jQuery('body').interpolate(data);
+  // jQuery('body').jam_cleanup();
+  jQuery.interpolate(data);
+  jQuery.jam_cleanup();
 };
 
-// Interpolate data into template nodes.
+//
+// Remove any unwanted jam tags.
+//
+// TODO: remove jam attributes too.
+jQuery.jam_cleanup = function() {
+  jQuery("[@jam='erase']").unwrap();
+};
 
+//
+// Interpolate data into template nodes.
+//
 jQuery.fn.interpolate = function(data) {
   if(!data) {
     this.remove();
   }
   else if (data instanceof Array) {
-    this.interpolate_array(data);
+    this.interpolate_sequence(data);
   }
   else if(data instanceof Object) {
     this.interpolate_object(data);
   }
   else {
-    this.interpolate_value(data);
+    this.interpolate_scalar(data);
   };
   return this;
 };
 
+//
 // Interpolate object mapping.
-
+//
 jQuery.fn.interpolate_object = function(data) {
   var qry;
   var attr;
@@ -135,13 +157,15 @@ jQuery.fn.interpolate_object = function(data) {
   };
 };
 
+//
 // Interpolate attribute.
 //
 // TODO
 
+//
 // Interpolate array sequence.
-
-jQuery.fn.interpolate_array = function(data) {
+//
+jQuery.fn.interpolate_sequence = function(data) {
   var temp = this.clone();
   this.empty();
   for (var i in data) {
@@ -151,14 +175,15 @@ jQuery.fn.interpolate_array = function(data) {
   };
 };
 
-// Interpolate value.
 //
-// This has some special HTML features.
+// Interpolate scalar value.
 //
-// TODO Should we have two modes --one with and one
+// TODO: Should this has some special HTML features?
+//
+// TODO: Should we have two modes --one with and one
 // without the extra HTML features?
-
-jQuery.fn.interpolate_value = function(data) {
+//
+jQuery.fn.interpolate_scalar = function(data) {
   //var all_special = new Array;
 
   // text inputs
@@ -173,6 +198,16 @@ jQuery.fn.interpolate_value = function(data) {
 //alert(data);
   this.empty();
   this.append(data.toString());
+};
+
+//
+// Unwrap a node, such that the outer tag is
+// removed, leaving only it's own children.
+//
+jQuery.fn.unwrap = function(expr) {
+  return this.each(function(){
+     $(this).parents(expr).eq(0).after(this).remove();
+  });
 };
 
 
