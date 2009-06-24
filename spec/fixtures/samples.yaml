@@ -1,0 +1,19 @@
+---
+
+- data:
+    a: A
+    b: B
+  template:
+    <x><y><m id="a">dummy</m><n id="b">dummy</n></y></x>
+  result:
+    <x><y><m id="a">A</m><n id="b">B</n></y></x>
+
+- data:
+    a: [ A, B, C ]
+  template:
+    <x><y><m id="a">dummy</m></y></x>
+  result:
+    <x><y><m id="a">A</m><m id="a">B</m><m id="a">C</m></y></x>
+
+
+
