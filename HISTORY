@@ -1,10 +1,21 @@
 = Jam Change History
 
-== 0.0.2 / 2009-06-15
+== 0.2 / 2009-06-15
+
+This release cleans up the code and adds support for
+extensions. Currently only Nokigiri is supported as 
+a backend engine.
+
+Changes:
 
 * Rewrote the backend to support #jam extensions.
 
-== 0.0.1 / 2009-06-01
+== 0.1 / 2009-06-01
+
+This is the first version of Jam, as extracted from the
+Cherry project.
+
+Changes:
 
 * Happy Birthday!
 
