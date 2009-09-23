@@ -1,5 +1,15 @@
 = TODO
 
+== Use Stadard Selectors
+
+Currently Jam does a transform on selectors, converting
+what look like tag selectors to id selectors and vice-versa.
+Maybe this good, becuase usually id's are used to jam
+data into templates. However it is non-standard and thus
+less flexible. So the nominal behavior will be made to use
+regular selectors. An alternate method will be provided to
+handle the selector transform though.
+
 == Tag Erasing
 
 Add erase attribute, jam="erase" or erase="true" or other?
