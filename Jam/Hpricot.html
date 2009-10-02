@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: Jam::Hpricot</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+  <div class="head">
+    <h1 class="class">Jam::Hpricot</h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/jam/hpricot_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/jam/hpricot.rb">lib/jam/hpricot.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Engine</p>
+        
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#M000059">::new</a></li>
+          
+          <li><a href="#M000065">#append</a></li>
+          
+          <li><a href="#M000069">#attribute</a></li>
+          
+          <li><a href="#M000071">#cleanup</a></li>
+          
+          <li><a href="#M000062">#copy</a></li>
+          
+          <li><a href="#M000060">#document</a></li>
+          
+          <li><a href="#M000075">#each_node</a></li>
+          
+          <li><a href="#M000064">#empty</a></li>
+          
+          <li><a href="#M000067">#remove</a></li>
+          
+          <li><a href="#M000063">#remove</a></li>
+          
+          <li><a href="#M000066">#replace</a></li>
+          
+          <li><a href="#M000068">#replace_content_with_text</a></li>
+          
+          <li><a href="#M000061">#search</a></li>
+          
+          <li><a href="#M000074">#unwrap</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../README.html">README</a></li>
+        
+          <li class="file"><a href="../TODO.html">TODO</a></li>
+        
+          <li class="file"><a href="../bin/jam.html">jam</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../Jam.html">Jam</a></li>
+        
+          <li class="module"><a href="../Jam/CSStoXPath.html">Jam::CSStoXPath</a></li>
+        
+          <li class="class"><a href="../Jam/Engine.html">Jam::Engine</a></li>
+        
+          <li class="class"><a href="../Jam/Hpricot.html">Jam::Hpricot</a></li>
+        
+          <li class="class"><a href="../Jam/LibXML.html">Jam::LibXML</a></li>
+        
+          <li class="class"><a href="../Jam/Nokogiri.html">Jam::Nokogiri</a></li>
+        
+          <li class="class"><a href="../Jam/REXML.html">Jam::REXML</a></li>
+        
+          <li class="class"><a href="../Jam/Template.html">Jam::Template</a></li>
+        
+          <li class="module"><a href="../LibXML.html">LibXML</a></li>
+        
+          <li class="module"><a href="../LibXML/XML.html">LibXML::XML</a></li>
+        
+          <li class="class"><a href="../LibXML/XML/Document.html">LibXML::XML::Document</a></li>
+        
+          <li class="class"><a href="../LibXML/XML/Node.html">LibXML::XML::Node</a></li>
+        
+          <li class="module"><a href="../LibXML/XML/XPath.html">LibXML::XML::XPath</a></li>
+        
+          <li class="class"><a href="../LibXML/XML/XPath/Object.html">LibXML::XML::XPath::Object</a></li>
+        
+          <li class="module"><a href="../Nokogiri.html">Nokogiri</a></li>
+        
+          <li class="module"><a href="../Nokogiri/XML.html">Nokogiri::XML</a></li>
+        
+          <li class="class"><a href="../Nokogiri/XML/Document.html">Nokogiri::XML::Document</a></li>
+        
+          <li class="class"><a href="../Nokogiri/XML/Node.html">Nokogiri::XML::Node</a></li>
+        
+          <li class="class"><a href="../Nokogiri/XML/NodeSet.html">Nokogiri::XML::NodeSet</a></li>
+        
+          <li class="module"><a href="../Hpricot.html">Hpricot</a></li>
+        
+          <li class="class"><a href="../Hpricot/Doc.html">Hpricot::Doc</a></li>
+        
+          <li class="class"><a href="../Hpricot/Elem.html">Hpricot::Elem</a></li>
+        
+          <li class="class"><a href="../Hpricot/Elements.html">Hpricot::Elements</a></li>
+        
+          <li class="module"><a href="../REXML.html">REXML</a></li>
+        
+          <li class="class"><a href="../REXML/Document.html">REXML::Document</a></li>
+        
+          <li class="class"><a href="../REXML/Element.html">REXML::Element</a></li>
+        
+          <li class="class"><a href="../REXML/XPath.html">REXML::XPath</a></li>
+        
+          <li class="class"><a href="../String.html">String</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+
+    <div id="validator-badges">
+      Generated with <a href="http://github.com/proutils/rdazzle">Razzle Dazzle Redfish</a>.<br/>
+      <a href="http://validator.w3.org/check/referer">[Validate]</a>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      <p>
+<a href="Hpricot.html">Hpricot</a> Adaptor
+</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(*options)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 37</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">options</span>)
+      <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="append-method" class="method-detail ">
+        <a name="M000065"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">append</span><span
+            class="method-args">(ns, child)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="append-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 67</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">append</span>(<span class="ruby-identifier">ns</span>, <span class="ruby-identifier">child</span>)
+      <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">append</span>(<span class="ruby-identifier">child</span>.<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="attribute-method" class="method-detail ">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">attribute</span><span
+            class="method-args">(ns, att, val)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="attribute-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 97</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">attribute</span>(<span class="ruby-identifier">ns</span>, <span class="ruby-identifier">att</span>, <span class="ruby-identifier">val</span>)
+      <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">att</span>, <span class="ruby-identifier">val</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="cleanup-method" class="method-detail ">
+        <a name="M000071"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">cleanup</span><span
+            class="method-args">(node)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Remove jam nodes that ask for it, and all jam attributes.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="cleanup-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 103</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cleanup</span>(<span class="ruby-identifier">node</span>)
+      <span class="ruby-comment cmt">#node = node.root if ::Nokogiri::XML::Document === node</span>
+      <span class="ruby-comment cmt"># remove unwanted tags</span>
+      <span class="ruby-identifier">node</span>.<span class="ruby-identifier">search</span>(<span class="ruby-value str">&quot;//*[@jam='erase']&quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">unwrap</span>(<span class="ruby-identifier">n</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-comment cmt"># remove jam attributes</span>
+
+      <span class="ruby-comment cmt">#</span>
+      <span class="ruby-identifier">node</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="copy-method" class="method-detail ">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">copy</span><span
+            class="method-args">(node)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+deep copy # TODO: works?
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="copy-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 52</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">copy</span>(<span class="ruby-identifier">node</span>)
+      <span class="ruby-identifier">node</span>.<span class="ruby-identifier">dup</span> 
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="document-method" class="method-detail ">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">document</span><span
+            class="method-args">(source)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="document-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 42</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">document</span>(<span class="ruby-identifier">source</span>)
+      <span class="ruby-operator">::</span><span class="ruby-constant">Hpricot</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">source</span>) <span class="ruby-comment cmt">#, *@options)</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="each-node-method" class="method-detail ">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">each_node</span><span
+            class="method-args">(nodes)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Iterate over each node.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="each-node-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 125</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_node</span>(<span class="ruby-identifier">nodes</span>)
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-operator">::</span><span class="ruby-constant">Hpricot</span><span class="ruby-operator">::</span><span class="ruby-constant">Elements</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">nodes</span>
+        <span class="ruby-identifier">nodes</span> = [<span class="ruby-identifier">nodes</span>]
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">node</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="empty-method" class="method-detail ">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">empty</span><span
+            class="method-args">(ns)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="empty-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 62</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty</span>(<span class="ruby-identifier">ns</span>)
+      <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">empty</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="remove-method" class="method-detail ">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">remove</span><span
+            class="method-args">(node)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="remove-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 78</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove</span>(<span class="ruby-identifier">node</span>)
+      <span class="ruby-identifier">node</span>.<span class="ruby-identifier">remove</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="remove-method" class="method-detail ">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">remove</span><span
+            class="method-args">(node)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="remove-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 57</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove</span>(<span class="ruby-identifier">node</span>)
+      <span class="ruby-identifier">node</span>.<span class="ruby-identifier">remove</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="replace-method" class="method-detail ">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">replace</span><span
+            class="method-args">(ns, child)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="replace-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">ns</span>, <span class="ruby-identifier">child</span>)
+      <span class="ruby-identifier">empty</span>(<span class="ruby-identifier">ns</span>)
+      <span class="ruby-identifier">append</span>(<span class="ruby-identifier">ns</span>, <span class="ruby-identifier">child</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="replace-content-with-text-method" class="method-detail ">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">replace_content_with_text</span><span
+            class="method-args">(node, text)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="replace-content-with-text-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 83</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace_content_with_text</span>(<span class="ruby-identifier">node</span>, <span class="ruby-identifier">text</span>)
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">node</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">Hpricot</span><span class="ruby-operator">::</span><span class="ruby-constant">Elements</span>
+        <span class="ruby-identifier">node</span>.<span class="ruby-identifier">inner_html</span> = <span class="ruby-identifier">text</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-operator">::</span><span class="ruby-constant">Array</span>
+        <span class="ruby-identifier">node</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">n</span>.<span class="ruby-identifier">inner_html</span> = <span class="ruby-identifier">text</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="search-method" class="method-detail ">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">search</span><span
+            class="method-args">(node, qry)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="search-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 47</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">node</span>, <span class="ruby-identifier">qry</span>)
+      <span class="ruby-identifier">node</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">qry</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="unwrap-method" class="method-detail ">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">unwrap</span><span
+            class="method-args">(node)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Unwrap a node, such that the outer tag is removed, leaving only it&#8217;s
+own children.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="unwrap-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/jam/hpricot.rb, line 118</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unwrap</span>(<span class="ruby-identifier">node</span>)
+      <span class="ruby-identifier">node</span>.<span class="ruby-identifier">each_child</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">insert_before</span>(<span class="ruby-identifier">n</span>, <span class="ruby-identifier">node</span>) }
+      <span class="ruby-operator">::</span><span class="ruby-constant">Hpricot</span><span class="ruby-operator">::</span><span class="ruby-constant">Elements</span>[<span class="ruby-identifier">node</span>].<span class="ruby-identifier">remove</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</body>
+</html>

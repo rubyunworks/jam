@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>File: TODO [Jam]</title>
+
+  <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+  <script src="./js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file">
+
+  <div class="head">
+    <h1>TODO</h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="./README.html">README</a></li>
+        
+          <li class="file"><a href="./TODO.html">TODO</a></li>
+        
+          <li class="file"><a href="./bin/jam.html">jam</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./Jam.html">Jam</a></li>
+        
+          <li><a href="./Jam/CSStoXPath.html">Jam::CSStoXPath</a></li>
+        
+          <li><a href="./Jam/Engine.html">Jam::Engine</a></li>
+        
+          <li><a href="./Jam/Hpricot.html">Jam::Hpricot</a></li>
+        
+          <li><a href="./Jam/LibXML.html">Jam::LibXML</a></li>
+        
+          <li><a href="./Jam/Nokogiri.html">Jam::Nokogiri</a></li>
+        
+          <li><a href="./Jam/REXML.html">Jam::REXML</a></li>
+        
+          <li><a href="./Jam/Template.html">Jam::Template</a></li>
+        
+          <li><a href="./LibXML.html">LibXML</a></li>
+        
+          <li><a href="./LibXML/XML.html">LibXML::XML</a></li>
+        
+          <li><a href="./LibXML/XML/Document.html">LibXML::XML::Document</a></li>
+        
+          <li><a href="./LibXML/XML/Node.html">LibXML::XML::Node</a></li>
+        
+          <li><a href="./LibXML/XML/XPath.html">LibXML::XML::XPath</a></li>
+        
+          <li><a href="./LibXML/XML/XPath/Object.html">LibXML::XML::XPath::Object</a></li>
+        
+          <li><a href="./Nokogiri.html">Nokogiri</a></li>
+        
+          <li><a href="./Nokogiri/XML.html">Nokogiri::XML</a></li>
+        
+          <li><a href="./Nokogiri/XML/Document.html">Nokogiri::XML::Document</a></li>
+        
+          <li><a href="./Nokogiri/XML/Node.html">Nokogiri::XML::Node</a></li>
+        
+          <li><a href="./Nokogiri/XML/NodeSet.html">Nokogiri::XML::NodeSet</a></li>
+        
+          <li><a href="./Hpricot.html">Hpricot</a></li>
+        
+          <li><a href="./Hpricot/Doc.html">Hpricot::Doc</a></li>
+        
+          <li><a href="./Hpricot/Elem.html">Hpricot::Elem</a></li>
+        
+          <li><a href="./Hpricot/Elements.html">Hpricot::Elements</a></li>
+        
+          <li><a href="./REXML.html">REXML</a></li>
+        
+          <li><a href="./REXML/Document.html">REXML::Document</a></li>
+        
+          <li><a href="./REXML/Element.html">REXML::Element</a></li>
+        
+          <li><a href="./REXML/XPath.html">REXML::XPath</a></li>
+        
+          <li><a href="./String.html">String</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+
+    <div id="validator-badges">
+      Generated with <a href="http://github.com/proutils/rdazzle">Razzle Dazzle Redfish</a>.<br/>
+      <a href="http://validator.w3.org/check/referer">[Validate]</a>
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1><a href="TODO.html">TODO</a></h1>
+<h2>Use Stadard Selectors</h2>
+<p>
+Currently <a href="Jam.html">Jam</a> does a transform on selectors,
+converting what look like tag selectors to id selectors and vice-versa.
+Maybe this good, becuase usually id&#8217;s are used to jam data into
+templates. However it is non-standard and thus less flexible. So the
+nominal behavior will be made to use regular selectors. An alternate method
+will be provided to handle the selector transform though.
+</p>
+<h2>Tag Erasing</h2>
+<p>
+Add erase attribute, jam=&#8220;erase&#8221; or erase=&#8220;true&#8221; or
+other? This will be used to to remove the tag from the xml/xhtml.
+</p>
+<h2>Punt Adapter Support to Cherry?</h2>
+<p>
+It would be much easier to create cherry, and then use that to provide
+different backend adapters.
+</p>
+<p>
+I may limit direct support to <a href="Nokogiri.html">Nokogiri</a> and let
+Cherry handle the others. <a href="Hpricot.html">Hpricot</a> adapter works
+pretty well though (despite the unit test bombing). So maybe support <a
+href="Hpricot.html">Hpricot</a> directly too. I&#8217;d like to support
+LibXML-Ruby directly since I helped with that project for so long, but
+it&#8217;s API is not quite as easy to support. So&#8230; get <a
+href="Nokogiri.html">Nokogiri</a> working first at least.
+</p>
+
+  </div>
+
+</body>
+
+
+</html>
