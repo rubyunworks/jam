@@ -1,8 +1,11 @@
 = Jam
 
-  http://jam.rubyforge.org
+* http://rubyworks.github.com/jam
+* http://github.com/rubyworks/jam
 
-Jam is a data-driven templater system. Jam provides 100% sepearation between
+== DESCRIPTION:
+
+Jam is a data-driven template system. Jam provides 100% seperation between
 logic and presentation.
 
 Jam can operate on the back-end via Ruby or on the front-end via Javascript/jQuery
@@ -10,7 +13,7 @@ off-loading some of the back-end work load, while also providing 100% SOC
 (Seperation of Concern).
 
 
-== Examples
+== SYNOPSIS:
 
 Here is an example of usage in Javascript.
 
@@ -26,12 +29,14 @@ For this reason a shortcut is provided.
   $.jam_ajax('http://somewhere/data.json')
 
 
-== TODO
+== TODO:
 
-Jam will likely witch from jQuery to Swizzle on the Javascript side in the future.
+Jam currently translates paths so that plain strings become id's. This will change.
+
+Also, Jam will likely witch from jQuery to Swizzle on the Javascript side in the future.
 
 
-= License
+= LICENSE
 
 Jam - Ruby/Javascript Templates
 
