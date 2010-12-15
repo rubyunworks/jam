@@ -1,21 +1,27 @@
 --- 
 title  : Jam
-suite  : rubyworks
 summary: Jam is a data-driven template system.
-contact: Thomas Sawyer <transfire@gmail.com>
-license: MIT
-authors: Thomas Sawyer
+contact: Trans <transfire@gmail.com>
+license: Apache 2.0
+company: RubyWorks
 created: 2008-12-16
 
 description:
   Jam is a data-driven template system.
 
+requires:
+  - syckle (build)
+
 resources:
-  homepage    : http://rubyworks.github.com/jam
-  development : http://github.com/rubyworks/jam
-  repository  : git://github.com/rubyworks/jam.git
-  mailinglist : http://groups.google.com/group/rubyworks-mailinglist
-  subscribe   : rubyworks-mailinglist+subscribe@googlegroups.com
+  home http://rubyworks.github.com/jam
+  code: http://github.com/rubyworks/jam
+  mail: http://groups.google.com/group/rubyworks-mailinglist
+
+repositories:
+  public: git://github.com/rubyworks/jam.git
+
+authors:
+  - Thomas Sawyer
 
 copyright: 
   Copyright (c) 2008 Thomas Sawyer
