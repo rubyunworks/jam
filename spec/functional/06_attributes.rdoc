@@ -1,0 +1,34 @@
+== Tag Attributes
+
+Given a template stored in @document:
+
+    <example id="a">foo</example>
+
+We can use data formated as follows to render attributes.
+
+    data = { 'a/@class' => "test" }
+
+We can create a Jam template from it.
+
+    template = Jam::Template.new(@document) #, "LibXML"
+
+And get the output using #expand.
+
+    template.expand(data)
+
+The result of which should be:
+
+    <example id="a" class="test">foo</example>
+
+Or, we can nest the data.
+
+    data = { :a => { '@class' => "test" } }
+
+    template = Jam::Template.new(@document) #, "LibXML"
+
+    template.expand(data)
+
+The result of which should be:
+
+    <example id="a" class="test">foo</example>
+

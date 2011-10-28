@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Interactive Jam Session</title>
+  <script src="assets/json2.js"></script>
+  <script src="assets/jquery.js"></script>
+  <script src="assets/jquery.jam.js"></script>
+  <script>
+    function jamChange(){
+      var json = $("#data").val();
+      var data = JSON.parse(json);
+      var temp = $("#temp").val();
+      $("#result").html(temp);
+      $("#result").interpolate(data);
+    };
+  </script>
+</head>
+<body>
+
+<div style="width: 45%; float: left; padding: 20px;">
+  <h2>Template:</h2>
+  <textarea id="temp" onBlur="jamChange();" style="width: 99%; height: 200px;">
+  </textarea>
+
+  <h2>Data:</h2>
+  <textarea id="data" onBlur="jamChange();" style="width: 99%; height: 200px;">
+  </textarea>
+</div>
+
+<div style="width: 45%; float: left; padding: 20px;">
+  <h2>Result:</h2>
+  <div id="result" style="width: 99%; border: 1px solid black;">
+
+  </div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+---
+#erbside:
+#  path: lib/jam/version.rb
+
+email:
+  mailto:
+    - ruby-talk@ruby-lang.org
+    - rubyworks-mailinglist@googlegroups.com
+
+qed:
+  files: qed/
+
+qedoc:
+  files: qed/
+  title: "Jam Demonstandum"
+  output: QED.rdoc
+
+gem:
+  active: true
+
+github:
+  active: true
+
+dnote:
+  output: log/NOTES.rdoc
+
+vclog:
+  output:
+    - log/History.rdoc
+    - log/Changes.rdoc
+
+#tag:
+#  service: custom
+#  release: |
+#    puts %[pom news | git tag -a -F - #{project.version}]
+

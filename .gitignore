@@ -1,5 +1,6 @@
+.reap/digest
+.yardopts
 log
-doc/rdoc
-doc/ri
+pages
 pkg
 tmp

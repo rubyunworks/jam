@@ -1,0 +1,46 @@
+== Table
+
+Given a table template stored in @document:
+
+    <table border="1">
+      <tr><th>name</th><th>author</th></tr>
+      <tr id="table1">
+        <td id="name"></td>
+        <td id="author"></td>
+      </tr>
+    </table>
+
+The table can be rendered with suite data structure.
+
+    data = {
+      :table1=>[ 
+        { :name=>"Ruby",   :author=>"Matz" },
+        { :name=>"Perl",   :author=>"Larry Wall" },
+        { :name=>"Python", :author=>"Guido van Rossum" }
+      ]
+    }
+
+We can create a Jam template from it.
+
+    template = Jam::Template.new(@document) #, "LibXML"
+
+And get the output using #expand.
+
+    template.expand(data)
+
+The result of which should be:
+
+    <table border="1">
+      <tr><th>name</th><th>author</th></tr>
+
+      <tr id="table1">
+        <td id="name">Ruby</td>
+        <td id="author">Matz</td>
+      </tr><tr id="table1">
+        <td id="name">Perl</td>
+        <td id="author">Larry Wall</td>
+      </tr><tr id="table1">
+        <td id="name">Python</td>
+        <td id="author">Guido van Rossum</td>
+      </tr></table>
+

@@ -1,0 +1,35 @@
+== Hash
+
+Given a hash to be rendered in a template.
+
+    data = {
+      :title => "Hello World",
+      :body  => "Amrita is a html template library for Ruby"
+    }
+
+And a suitable template stored in @document:
+
+    <html>
+      <body>
+        <h1 id="title">title will be inserted here</h1>
+        <p id="body">body text will be inserted here</p>
+      </body>
+    </html>
+
+We can create a Jam template from it.
+
+    template = Jam::Template.new(@document) #, "LibXML"
+
+And get the output using #expand.
+
+    template.expand(data)
+
+The result of which should be:
+
+    <html>
+      <body>
+        <h1 id="title">Hello World</h1>
+        <p id="body">Amrita is a html template library for Ruby</p>
+      </body>
+    </html>
+

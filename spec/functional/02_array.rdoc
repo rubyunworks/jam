@@ -1,0 +1,26 @@
+== Array
+
+Given an array to be rendered in a template.
+
+    data = { :list => %w{ A B C } }
+
+And a suitable template stored in @document:
+
+    <example>
+      <ul><li id="list"></li></ul>
+    </example>
+
+We can create a Jam template from it.
+
+    template = Jam::Template.new(@document) #, "LibXML"
+
+And get the output using #expand.
+
+    template.expand(data)
+
+The result of which should be:
+
+  <example>
+    <ul><li id="list">A</li><li id="list">B</li><li id="list">C</li></ul>
+  </example>
+

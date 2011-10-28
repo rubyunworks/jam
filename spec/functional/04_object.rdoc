@@ -1,0 +1,29 @@
+== Object
+
+Give an instance of any class, e.g.
+
+    class A
+      attr :a
+      def initialize
+        @a = "A"
+      end
+    end
+
+    data = A.new
+
+And a suitable template stored in @document:
+
+    <example id="a"></example>
+
+We can create a Jam template from it.
+
+    template = Jam::Template.new(@document) #, "LibXML"
+
+And get the output using #expand.
+
+    template.expand(data)
+
+The result of which should be:
+
+    <example id="a">A</example>
+

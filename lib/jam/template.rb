@@ -1,5 +1,5 @@
 require 'jam/nokogiri'
-require 'jam/libxml'
+#require 'jam/libxml'
 
 module Jam
 
